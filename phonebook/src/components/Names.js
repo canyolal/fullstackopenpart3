@@ -1,21 +1,17 @@
-import React from 'react'
-import personService from './../services/personService.js'
+import React from "react"
+import personService from "./../services/personService.js"
 
 
-const Names = ({persons,setPersons}) => {
+const Names = ({ persons, setPersons }) => {
     const deleteUser = (event) => {
-        if (window.confirm(`Delete ${persons.name} ?`)){
+        if (window.confirm(`Delete ${persons.name}?`)) {
             personService
-            .deleteUser(persons.id)
-            .then(response => {
-                console.log(response)
-                setPersons(response)
-            })
+                .deleteUser(persons._id)
+                .then(response => {
+                    console.log(response)
+                    setPersons(response)
+                })
         }
-        else {
-            //do nothing
-        }
-
     }
 
     return (
@@ -23,7 +19,7 @@ const Names = ({persons,setPersons}) => {
             {persons.name} {persons.number}
             <button className="deleteButton" type="submit">Delete</button>
         </form>
-    ) 
+    )
 }
 
 export default Names
